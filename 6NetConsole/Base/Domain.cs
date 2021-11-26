@@ -5,34 +5,42 @@ public class Domain
 {
 
     public Level? LevelDomain { get; set; }
-    public int LevelId { get; set; }
     private DataSource? DataSource { get; set; } 
 
-    public Domain(int levelId)
+    public Domain()
     {
-        LevelId = levelId;
         DataSource = new DataSource();
     }
 
-    public void ManagerDomain()
+    public async Task ManagerDomain()
     {
         Console.WriteLine("Manager Domain!");
-        LoadDataConfiguration();
-        InitLevel();
+        List<string> topics1 =  await LoadDataConfiguration();
+
+        string selectedTopic = SelectElement(topics1);
+
+        InitLevel(1);
         ShowData();
     }
 
-    private async Task LoadDataConfiguration()
+    private async Task<List<string>> LoadDataConfiguration()
     {
         Console.WriteLine("Load Data!");
-        List<string> topics1 = DataSource.ReadData();
+        return DataSource.ReadData("theme");        
     }
 
-    private async Task InitLevel()
+    private string SelectElement(List<string> elements){
+        Random rand = new Random();
+        int selectedIndex = rand.Next(elements.Count);
+        System.Console.WriteLine($"Topic: {elements[selectedIndex]}");
+        return elements[selectedIndex];
+    }
+
+    private async Task InitLevel(int levelId)
     {
         Console.WriteLine("InitLevel!");
-        LevelDomain = new Level(LevelId);
-        await LevelDomain.SelectLevel();
+        LevelDomain = new Level();
+        await LevelDomain.SelectLevel(1);
     }
 
     private void ShowData()

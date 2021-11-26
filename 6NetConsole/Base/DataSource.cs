@@ -4,10 +4,10 @@ namespace NetConsole;
 
 public class DataSource
 {
-    public List<string> ReadData()
+    public List<string> ReadData(string topic)
     {
         List<string>? listTopics;
-        using (StreamReader r = new StreamReader("JsonFiles/Theme.json"))
+        using (StreamReader r = new StreamReader($"JsonFiles/{topic}.json"))
         {
             string json = r.ReadToEnd();
             listTopics = JsonConvert.DeserializeObject<List<string>>(json);
