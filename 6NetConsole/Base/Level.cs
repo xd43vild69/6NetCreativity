@@ -22,6 +22,58 @@ public class Level
         DataSource = new DataSource();
         SelectLevel();
     }
+    private List<string> LoadByLevel(string topic, int quantity)
+    {
+        List<string> topicsTmp = LoadDataConfiguration(topic);
+        List<string> topics = new List<string>();
+        //Filter by element quantities
+
+        for (var i = 0; i < quantity; i++)
+        {
+            topics.Add(SelectElement(topicsTmp));
+        }
+
+        return topics;
+    }
+
+    private List<string> LoadDataConfiguration(string topic)
+    {
+        return DataSource.ReadData(topic);
+    }
+
+    private string SelectElement(List<string> elements)
+    {
+        Random rand = new Random();
+        int selectedIndex = rand.Next(elements.Count);
+        return elements[selectedIndex];
+    }
+
+    private void SetLevel1()
+    {
+        LevelId = 1;
+        SoundTrack = LoadByLevel("SoundTrack", 1);
+        CompositionElements = LoadByLevel("CompositionElements", 1);
+        Themes = LoadByLevel("Themes", 1);
+    }
+
+    private void SetLevel2()
+    {
+        LevelId = 2;
+        SoundTrack = LoadByLevel("SoundTrack", 1);
+        CompositionElements = LoadByLevel("CompositionElements", 2);
+        Themes = LoadByLevel("Themes", 2);
+        HighReferenceArtist = LoadByLevel("HighReferenceArtist", 2);
+    }
+
+    private void SetLevel3()
+    {
+        LevelId = 3;
+        SoundTrack = LoadByLevel("SoundTrack", 1);
+        CompositionElements = LoadByLevel("CompositionElements", 3);
+        Themes = LoadByLevel("Themes", 3);
+        HighReferenceArtist = LoadByLevel("HighReferenceArtist", 3);
+        ConflictVerbs = LoadByLevel("ConflictVerbs", 3);
+    }
 
     private void SelectLevel()
     {
@@ -44,43 +96,4 @@ public class Level
 
         runLevel();
     }
-
-    private void SetLevel1()
-    {
-        LevelId = 1;
-        SoundTrack = LoadByLevel("SoundTrack", 1);
-        CompositionElements = LoadByLevel("CompositionElements", 1);
-        Themes = LoadByLevel("Themes", 1);
-    }
-
-    private void SetLevel2()
-    {
-        LevelId = 2;
-        SoundTrack = LoadByLevel("SoundTrack", 2);
-        CompositionElements = LoadByLevel("CompositionElements", 2);
-        Themes = LoadByLevel("Themes", 2);
-        HighReferenceArtist = LoadByLevel("HighReferenceArtist", 2);
-    }
-
-    private void SetLevel3()
-    {
-        LevelId = 3;
-        SoundTrack = LoadByLevel("SoundTrack", 3);
-        CompositionElements = LoadByLevel("CompositionElements", 3);
-        Themes = LoadByLevel("Themes", 3);
-        HighReferenceArtist = LoadByLevel("HighReferenceArtist", 3);
-        ConflictVerbs = LoadByLevel("ConflictVerbs", 3);
-    }
-
-    private List<string> LoadByLevel(string topic, int quantity)
-    {
-        List<string> topics = LoadDataConfiguration(topic);
-        //Filter by elemnet quantities
-        return topics;
-    }
-
-    private List<string> LoadDataConfiguration(string topic)
-    {
-        return DataSource.ReadData(topic);
-    }    
 }
