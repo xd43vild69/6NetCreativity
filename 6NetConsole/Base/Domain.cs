@@ -12,8 +12,8 @@ public class Domain
         DataSource = new DataSource();
     }
 
-    public async Task ManagerDomain(int levelId)
-    {        
+    public void ManagerDomain(int levelId)
+    {
         InitLevel(levelId);
         ShowLevelData();
     }
@@ -25,20 +25,28 @@ public class Domain
 
     private void ShowLevelData()
     {
-
-        foreach (var item in LevelDomain.SoundTrack)
+        if (LevelDomain?.SoundTrack != null)
         {
-            System.Console.WriteLine($"Soundtracks: {item}");
+            foreach (var item in LevelDomain.SoundTrack)
+            {
+                System.Console.WriteLine($"Soundtracks: {item}");
+            }
         }
 
-        foreach (var item in LevelDomain.CompositionElements)
+        if (LevelDomain?.CompositionElements != null)
         {
-            System.Console.WriteLine($"Composition Elements: {item}");
+            foreach (var item in LevelDomain.CompositionElements)
+            {
+                System.Console.WriteLine($"Composition Elements: {item}");
+            }
         }
 
-        foreach (var item in LevelDomain.Themes)
+        if (LevelDomain?.Themes != null)
         {
-            System.Console.WriteLine($"Theme: {item}");
+            foreach (var item in LevelDomain.Themes)
+            {
+                System.Console.WriteLine($"Theme: {item}");
+            }
         }
     }
 }

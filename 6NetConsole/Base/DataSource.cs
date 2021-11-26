@@ -4,7 +4,7 @@ namespace NetConsole;
 
 public class DataSource
 {
-    public List<string> ReadData(string topic)
+    public IEnumerable<string> ReadData(string topic)
     {
         List<string>? listTopics;
         using (StreamReader r = new StreamReader($"JsonFiles/{topic}.json"))

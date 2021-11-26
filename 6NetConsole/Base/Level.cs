@@ -4,29 +4,30 @@ internal delegate void RunLevel();
 
 public class Level
 {
+    #region properties     
     public int LevelId { get; set; }
-    public List<string>? BodyParts { get; set; }
-    public List<string>? SoundTrack { get; set; }
-    public List<string>? CompositionElements { get; set; }
-    public List<string>? HighReferenceArtist { get; set; }
-    public List<string>? LowReferenceArtist { get; set; }
-    public List<string>? Materials { get; set; }
-    public List<string>? ConflictVerbs { get; set; }
-    public List<string>? Themes { get; set; }
-    public List<Quote>? Quotes { get; set; }
-    private DataSource? DataSource { get; set; }
-
+    public List<string>? BodyParts { get; set; } = new List<string>();
+    public List<string> SoundTrack { get; set; } = new List<string>();
+    public List<string>? CompositionElements { get; set; } = new List<string>();
+    public List<string>? HighReferenceArtist { get; set; } = new List<string>();
+    public List<string>? LowReferenceArtist { get; set; } = new List<string>();
+    public List<string>? Materials { get; set; } = new List<string>();
+    public List<string>? ConflictVerbs { get; set; } = new List<string>();
+    public List<string>? Themes { get; set; } = new List<string>();
+    public List<Quote>? Quotes { get; set; } = new List<Quote>();
+    private DataSource DataSource { get; set; } = new DataSource();
+    #endregion
     public Level(int levelId)
     {
         LevelId = levelId;
-        DataSource = new DataSource();
         SelectLevel();
     }
     private List<string> LoadByLevel(string topic, int quantity)
     {
-        List<string> topicsTmp = LoadDataConfiguration(topic);
+        List<string>? topicsTmp = LoadDataConfiguration(topic).ToList();
         List<string> topics = new List<string>();
-        //Filter by element quantities
+
+        if (topicsTmp == null) return new List<string>();
 
         for (var i = 0; i < quantity; i++)
         {
@@ -36,9 +37,10 @@ public class Level
         return topics;
     }
 
-    private List<string> LoadDataConfiguration(string topic)
+    private IEnumerable<string> LoadDataConfiguration(string topic)
     {
-        return DataSource.ReadData(topic);
+        List<string>? data = DataSource.ReadData(topic).ToList();
+        return data ?? new List<string>();
     }
 
     private string SelectElement(List<string> elements)
@@ -51,6 +53,7 @@ public class Level
     private void SetLevel1()
     {
         LevelId = 1;
+        List<Task<string>> tasks = new List<Task<string>>();
         SoundTrack = LoadByLevel("SoundTrack", 1);
         CompositionElements = LoadByLevel("CompositionElements", 1);
         Themes = LoadByLevel("Themes", 1);
