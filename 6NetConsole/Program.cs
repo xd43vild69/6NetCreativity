@@ -3,4 +3,6 @@
 //Console.WriteLine("Hello, World!");
 
 Domain d = new Domain(1);
-d.LoadDataConfiguration();
+d.ManagerDomain();
+
+Console.Read();
