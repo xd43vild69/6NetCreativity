@@ -15,12 +15,8 @@ public class Domain
     public async Task ManagerDomain()
     {
         Console.WriteLine("Manager Domain!");
-        List<string> topics1 =  await LoadDataConfiguration();
-
-        string selectedTopic = SelectElement(topics1);
-
         InitLevel(1);
-        ShowData();
+        ShowLevelData();
     }
 
     private async Task<List<string>> LoadDataConfiguration()
@@ -36,16 +32,19 @@ public class Domain
         return elements[selectedIndex];
     }
 
-    private async Task InitLevel(int levelId)
+    private void InitLevel(int levelId)
     {
-        Console.WriteLine("InitLevel!");
-        LevelDomain = new Level();
-        await LevelDomain.SelectLevel(1);
+        LevelDomain = new Level(levelId);
     }
 
-    private void ShowData()
+    private void ShowLevelData()
     {
         Console.WriteLine("Show Data!");
+
+        foreach (var item in LevelDomain.SoundTrack)
+        {
+            System.Console.WriteLine($"Soundtracks: {item}");
+        }
     }
 }
 

@@ -16,16 +16,18 @@ public class Level
     public List<Quote>? Quotes { get; set; }
     private DataSource? DataSource { get; set; }
 
-    public Level()
+    public Level(int levelId)
     {
+        LevelId = levelId;
         DataSource = new DataSource();
+        SelectLevel();
     }
 
-    public async Task SelectLevel(int levelId)
+    private void SelectLevel()
     {
         RunLevel runLevel = new RunLevel(SetLevel1);
 
-        switch (levelId)
+        switch (LevelId)
         {
             case 1:
                 runLevel = new RunLevel(SetLevel1);
@@ -80,5 +82,5 @@ public class Level
     private List<string> LoadDataConfiguration(string topic)
     {
         return DataSource.ReadData(topic);
-    }
+    }    
 }
