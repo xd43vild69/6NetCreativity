@@ -1,0 +1,16 @@
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/6NetConsole
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/6NetConsole.deps.json
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/6NetConsole.runtimeconfig.json
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/6NetConsole.dll
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/ref/6NetConsole.dll
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/bin/Debug/net6.0/6NetConsole.pdb
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.GlobalUsings.g.cs
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.csproj.AssemblyReference.cache
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.GeneratedMSBuildEditorConfig.editorconfig
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.AssemblyInfoInputs.cache
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.AssemblyInfo.cs
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.csproj.CoreCompileInputs.cache
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.dll
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/ref/6NetConsole.dll
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.pdb
+/Users/d13/Documents/dev/6NetCreativity/6NetConsole/obj/Debug/net6.0/6NetConsole.genruntimeconfig.cache
