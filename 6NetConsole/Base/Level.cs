@@ -2,10 +2,17 @@ namespace NetConsole;
 
 internal delegate void RunLevel();
 
+public enum Levels
+{
+    Level1 = 1, 
+    Level2 = 2, 
+    Level3 = 3
+}
+
 public class Level
 {
     #region properties     
-    public int LevelId { get; set; }
+    public Levels LevelId { get; set; }
     public List<string>? BodyParts { get; set; } = new List<string>();
     public List<string> SoundTrack { get; set; } = new List<string>();
     public List<string>? CompositionElements { get; set; } = new List<string>();
@@ -17,7 +24,7 @@ public class Level
     public List<Quote>? Quotes { get; set; } = new List<Quote>();
     private DataSource DataSource { get; set; } = new DataSource();
     #endregion
-    public Level(int levelId)
+    public Level(Levels levelId)
     {
         LevelId = levelId;
         SelectLevel();
@@ -52,7 +59,7 @@ public class Level
 
     private void SetLevel1()
     {
-        LevelId = 1;
+        LevelId = Levels.Level1;
         List<Task<string>> tasks = new List<Task<string>>();
         SoundTrack = LoadByLevel("SoundTrack", 1);
         CompositionElements = LoadByLevel("CompositionElements", 1);
@@ -61,7 +68,7 @@ public class Level
 
     private void SetLevel2()
     {
-        LevelId = 2;
+        LevelId = Levels.Level2;
         SoundTrack = LoadByLevel("SoundTrack", 1);
         CompositionElements = LoadByLevel("CompositionElements", 2);
         Themes = LoadByLevel("Themes", 2);
@@ -70,7 +77,7 @@ public class Level
 
     private void SetLevel3()
     {
-        LevelId = 3;
+        LevelId = Levels.Level3;
         SoundTrack = LoadByLevel("SoundTrack", 1);
         CompositionElements = LoadByLevel("CompositionElements", 3);
         Themes = LoadByLevel("Themes", 3);
@@ -80,22 +87,12 @@ public class Level
 
     private void SelectLevel()
     {
-        RunLevel runLevel = new RunLevel(SetLevel1);
-
-        switch (LevelId)
-        {
-            case 1:
-                runLevel = new RunLevel(SetLevel1);
-                break;
-            case 2:
-                runLevel = new RunLevel(SetLevel2);
-                break;
-            case 3:
-                runLevel = new RunLevel(SetLevel3);
-                break;
-            default:
-                break;
-        }
+        var runLevel = LevelId switch{ 
+            Levels.Level1 => new RunLevel(SetLevel1),
+            Levels.Level2 => new RunLevel(SetLevel2),
+            Levels.Level3 => new RunLevel(SetLevel3),
+            _ => throw new ArgumentOutOfRangeException(nameof(LevelId)),
+        };
 
         runLevel();
     }

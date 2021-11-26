@@ -12,13 +12,13 @@ public class Domain
         DataSource = new DataSource();
     }
 
-    public void ManagerDomain(int levelId)
+    public void SetCreativityLevel(Levels levelId)
     {
         InitLevel(levelId);
         ShowLevelData();
     }
 
-    private void InitLevel(int levelId)
+    private void InitLevel(Levels levelId)
     {
         LevelDomain = new Level(levelId);
     }

@@ -1,6 +1,6 @@
 ﻿using NetConsole;
 
-Domain d = new Domain();
-d.ManagerDomain(1);
+Domain domain = new Domain();
+domain.SetCreativityLevel(Levels.Level1);
 
 Console.Read();
