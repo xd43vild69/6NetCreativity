@@ -1,4 +1,5 @@
-# 6NetCreativity
+:cd:
+# 6NetCreativity 
 
 ## skills - training - mind hacks
 
